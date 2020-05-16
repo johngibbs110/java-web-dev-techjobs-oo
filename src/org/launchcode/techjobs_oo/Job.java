@@ -35,6 +35,35 @@ public class Job {
     //  match.
 
     @Override
+    public String toString() {
+        if (name.equals("") && employer.getValue().equals("") && location.getValue().equals("") && positionType.getValue().equals("") && coreCompetency.getValue().equals("")) {
+            return "OOPS! This job does not seem to exist.";
+        }
+        if (name.equals("")) {
+            name = "Data not available";
+        }
+        if (employer.getValue().equals("")) {
+            employer = new Employer("Data not available");
+        }
+        if (location.getValue().equals("")) {
+            location = new Location("Data not available");
+        }
+        if (positionType.getValue().equals("")) {
+            positionType = new PositionType("Data not available");
+        }
+        if (coreCompetency.getValue().equals("")) {
+            coreCompetency = new CoreCompetency("Data not available.");
+        }
+        return  "\n" +
+                "ID: " + id + "\n" +
+                "Name: " + name + "\n" +
+                "Employer: " + employer + "\n" +
+                "Location: " + location + "\n" +
+                "Position Type: " + positionType + "\n" +
+                "Core Competency: " + coreCompetency + "\n";
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Job)) return false;
